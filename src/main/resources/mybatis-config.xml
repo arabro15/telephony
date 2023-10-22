@@ -18,4 +18,10 @@
         <setting name="jdbcTypeForNull" value="NULL"/>
         <setting name="logImpl" value="SLF4J"/>
     </settings>
+
+    <typeHandlers>
+        <typeHandler javaType="java.util.UUID"
+                     handler="kz.arabro.telephony.adapter.repository.typehandler.UUIDTypeHandler"/>
+    </typeHandlers>
+
 </configuration>
