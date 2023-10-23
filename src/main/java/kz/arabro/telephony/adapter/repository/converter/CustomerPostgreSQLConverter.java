@@ -7,7 +7,7 @@ import kz.arabro.telephony.domain.entity.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class CustomerPostgreSQLConverter {
+public final class CustomerPostgreSQLConverter {
 
     public static CustomerPostgreSQLModel toModel(Customer customer) {
         if (customer == null) {
@@ -71,4 +71,6 @@ public class CustomerPostgreSQLConverter {
                 map(CustomerPostgreSQLConverter::toEntity).
                 toList();
     }
+
+    private CustomerPostgreSQLConverter() {}
 }
