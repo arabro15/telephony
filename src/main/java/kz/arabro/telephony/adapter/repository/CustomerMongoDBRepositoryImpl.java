@@ -11,6 +11,7 @@ import kz.arabro.telephony.domain.entity.Phone;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository
 public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository {
 
     private final CustomerDao customerDao;

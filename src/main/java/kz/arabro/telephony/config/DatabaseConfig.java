@@ -1,5 +1,6 @@
 package kz.arabro.telephony.config;
 
+import com.github.cloudyrock.spring.v5.EnableMongock;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+@EnableMongock
 @Configuration
 @EnableConfigurationProperties
 @EnableTransactionManagement

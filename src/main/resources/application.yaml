@@ -30,5 +30,8 @@ mybatis:
   mapper-locations: "classpath:db/mappers/*.xml"
   config-location: "classpath:mybatis-config.xml"
 
+mongock:
+  change-logs-scan-package: "kz.arabro.telephony.util.migration"
+
 server:
   port: 8091
