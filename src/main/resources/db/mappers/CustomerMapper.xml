@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kz.arabro.telephony.adapter.repository.mapper.CustomerMapper">
+    <resultMap id="customerPostgreSQLModel"
+               type="kz.arabro.telephony.adapter.repository.model.CustomerPostgreSQLModel">
+        <id column="id" property="customerID"/>
+        <result column="name" property="name"/>
+        <result column="year_of_birth" property="yearOfBirth"/>
+        <result column="first_phone" property="firstPhone"/>
+        <result column="second_phone" property="secondPhone"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+
+    <insert id="insertCustomer" useGeneratedKeys="false">
+        INSERT INTO customer (id,
+                              name,
+                              year_of_birth,
+                              first_phone,
+                              second_phone,
+                              created_at)
+        VALUES (#{model.customerID},
+                #{model.name},
+                #{model.yearOfBirth},
+                #{model.firstPhone},
+                #{model.secondPhone},
+                #{model.createdAt})
+    </insert>
+
+    <delete id="deleteCustomerByID">
+        DELETE
+        FROM customer
+        WHERE id = (#{id});
+    </delete>
+
+    <delete id="deleteCustomerByPhone">
+        DELETE
+        FROM customer
+        WHERE first_phone = (#{phone})
+           OR second_phone = (#{phone});
+    </delete>
+
+    <update id="updateCustomerByID">
+        UPDATE customer
+        SET name          = (#{model.name}),
+            year_of_birth = (#{model.yearOfBirth}),
+            first_phone   = (#{model.firstPhone}),
+            second_phone  = (#{model.secondPhone}),
+            created_at    = (#{model.createdAt})
+        WHERE id = (#{model.customerID})
+    </update>
+
+    <update id="updateCustomerByPhone">
+        UPDATE customer
+        SET id            = (#{model.customerID}),
+            name          = (#{model.name}),
+            year_of_birth = (#{model.yearOfBirth}),
+            first_phone   = (#{model.firstPhone}),
+            second_phone  = (#{model.secondPhone}),
+            created_at    = (#{model.createdAt})
+        WHERE first_phone = (#{model.firstPhone})
+           OR second_phone = (#{model.secondPhone})
+    </update>
+
+    <select id="selectCustomerByID" resultMap="customerPostgreSQLModel">
+        SELECT id,
+               name,
+               year_of_birth,
+               first_phone,
+               second_phone,
+               created_at
+        FROM customer
+        WHERE id = (#{id})
+    </select>
+
+    <select id="selectCustomerByPhone" resultMap="customerPostgreSQLModel">
+        SELECT id,
+               name,
+               year_of_birth,
+               first_phone,
+               second_phone,
+               created_at
+        FROM customer
+        WHERE first_phone = (#{phone})
+           OR second_phone = (#{phone})
+    </select>
+    <select id="selectCustomerWithFilter" resultMap="customerPostgreSQLModel">
+        SELECT id,
+               name,
+               year_of_birth,
+               first_phone,
+               second_phone,
+               created_at
+        FROM customer
+        <if test="filter.id != null and filter.phone == null">
+            WHERE id = (#{filter.id})
+        </if>
+        <if test="filter.id == null and filter.phone != null">
+            WHERE first_phone = (#{filter.phone})
+            OR second_phone = (#{filter.phone})
+        </if>
+        <if test="filter.id != null and filter.phone != null">
+            WHERE id = (#{filter.id})
+            OR first_phone = (#{filter.phone})
+            OR second_phone = (#{filter.phone})
+        </if>
+        <if test="filter.limit != null">
+            LIMIT (#{filter.limit})
+        </if>
+        <if test="filter.offset != null">
+            OFFSET (#{filter.offset})
+        </if>
+
+    </select>
+
+    <select id="existsCustomerByID" resultType="boolean">
+        SELECT EXISTS(SELECT id
+                      FROM customer
+                      WHERE id = (#{id}));
+    </select>
+
+    <select id="existsCustomerByPhone" resultType="boolean">
+        SELECT EXISTS(SELECT id
+            FROM customer
+            WHERE first_phone = (#{phone})
+                OR second_phone = (#{phone}))
+    </select>
+
+
+</mapper>
