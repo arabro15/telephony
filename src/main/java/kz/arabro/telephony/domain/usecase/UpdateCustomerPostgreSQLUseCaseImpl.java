@@ -4,11 +4,13 @@ import kz.arabro.telephony.boundary.model.CustomerUpdateInfo;
 import kz.arabro.telephony.boundary.repository.CustomerPostgreSQLRepository;
 import kz.arabro.telephony.boundary.usecase.UpdateCustomerPostgreSQLUseCase;
 import kz.arabro.telephony.domain.entity.*;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 
+@Service
 public class UpdateCustomerPostgreSQLUseCaseImpl implements UpdateCustomerPostgreSQLUseCase {
 
     private final CustomerPostgreSQLRepository customerPostgreSQLRepository;

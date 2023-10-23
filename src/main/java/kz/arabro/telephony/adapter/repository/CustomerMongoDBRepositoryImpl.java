@@ -11,6 +11,7 @@ import kz.arabro.telephony.domain.entity.Phone;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
         this.mongoTemplate = mongoTemplate;
     }
 
+    @Transactional
     @Override
     public CustomerID save(Customer customer) {
         if (customer == null) {
@@ -40,6 +42,7 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
         return customer.getCustomerID();
     }
 
+    @Transactional
     @Override
     public void deleteByID(CustomerID customerID) {
         if (customerID == null) {
@@ -49,6 +52,7 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
         customerDao.deleteById(customerID.getValue());
     }
 
+    @Transactional
     @Override
     public void deleteByPhone(Phone phone) {
         if (phone == null) {
@@ -60,6 +64,7 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
         customerDao.deleteByFirstPhoneOrSecondPhone(phoneStr, phoneStr);
     }
 
+    @Transactional
     @Override
     public void updateByID(Customer customer) {
         if (customer == null) {
@@ -73,6 +78,7 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
         }
     }
 
+    @Transactional
     @Override
     public void updateByPhone(Customer customer) {
         if (customer == null) {
@@ -92,6 +98,7 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
             }
         }
     }
+
 
     @Override
     public Optional<Customer> findByID(CustomerID customerID) {
