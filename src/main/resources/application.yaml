@@ -3,6 +3,14 @@ spring:
     name: telephony-test-task-demo
   main:
     banner-mode: off
+  data:
+    mongodb:
+      username: local_mongo_user
+      password: 106fe2e9be0e4016a60f68ad40c9451a
+      host: localhost
+      port: 27039
+      database: telephony
+      authentication-database: admin
   datasource:
     dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
     username: local_pg_user
