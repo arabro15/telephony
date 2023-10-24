@@ -13,6 +13,7 @@ public interface CustomerMapper {
     void insertCustomer(@Param("model") CustomerPostgreSQLModel model);
     void deleteCustomerByID(@Param("id") UUID id);
     void deleteCustomerByPhone(@Param("phone") String phone);
+    void deleteAll();
     void updateCustomerByID(@Param("model") CustomerPostgreSQLModel model);
     void updateCustomerByPhone(@Param("model") CustomerPostgreSQLModel model);
     CustomerPostgreSQLModel selectCustomerByID(@Param("id") UUID id);

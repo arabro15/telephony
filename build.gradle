@@ -35,6 +35,13 @@ dependencies {
 	implementation group: 'com.github.cloudyrock.mongock', name: 'mongock-spring-v5', version: '4.3.8'
 	implementation group: 'com.github.cloudyrock.mongock', name: 'mongodb-springdata-v3-driver', version: '4.3.8'
 
+
+	testImplementation "org.testcontainers:testcontainers:1.19.1"
+	testImplementation "org.testcontainers:junit-jupiter:1.19.1"
+	testImplementation "org.testcontainers:postgresql:1.19.1"
+	testImplementation "org.testcontainers:mongodb:1.19.1"
+
+	testImplementation group: 'org.testng', name: 'testng', version: '7.8.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.2'
 }

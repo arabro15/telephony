@@ -39,6 +39,10 @@
            OR second_phone = (#{phone});
     </delete>
 
+    <delete id="deleteAll">
+        DELETE FROM customer
+    </delete>
+
     <update id="updateCustomerByID">
         UPDATE customer
         SET name          = (#{model.name}),
