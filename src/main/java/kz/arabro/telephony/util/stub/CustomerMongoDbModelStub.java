@@ -5,6 +5,7 @@ import kz.arabro.telephony.domain.entity.CustomerID;
 import kz.arabro.telephony.util.generator.NumberGenerator;
 import kz.arabro.telephony.util.generator.StringGenerator;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +16,10 @@ public final class CustomerMongoDbModelStub {
         var customerMongoDBModel = new CustomerMongoDBModel();
         customerMongoDBModel.setCustomerID(CustomerID.newID().getValue());
         customerMongoDBModel.setName(StringGenerator.getRandomString());
-        customerMongoDBModel.setYearOfBirth(String.valueOf(NumberGenerator.getRandomNumber(1940, 2023)));
-        customerMongoDBModel.setFirstPhone(String.valueOf(NumberGenerator.getRandomNumber(87_700_000_000L, 87_777_999_999L)));
-        customerMongoDBModel.setSecondPhone(String.valueOf(NumberGenerator.getRandomNumber(87_700_000_000L, 87_777_999_999L)));
-        customerMongoDBModel.setCreatedAt(String.valueOf(Instant.now()));
+        customerMongoDBModel.setYearOfBirth(String.valueOf(NumberGenerator.getRandomNumber(1920, 2023)));
+        customerMongoDBModel.setFirstPhone(String.valueOf(NumberGenerator.getRandomNumber(8_700_000_0000L, 8_778_999_9999L)));
+        customerMongoDBModel.setSecondPhone(String.valueOf(NumberGenerator.getRandomNumber(8_700_000_0000L, 8_778_999_9999L)));
+        customerMongoDBModel.setCreatedAt(Timestamp.from(Instant.now()).toString());
 
         return customerMongoDBModel;
     }

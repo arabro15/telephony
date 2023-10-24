@@ -84,18 +84,19 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
     @Override
     public void updateByPhone(Customer customer) {
         if (customer == null) {
-            throw RepositoryError.errCustomerIsRequiredInUpdateByID();
+            throw RepositoryError.errCustomerIsRequiredInUpdateByPhone();
         }
 
         var firstPhone = customer.getFirstPhone().getValue();
         var secondPhone = customer.getSecondPhone().getValue();
 
         var customerOpt = customerDao.findByFirstPhoneOrSecondPhone(firstPhone, secondPhone);
-        if (customerOpt.isPresent()) {
-            var id = customer.getCustomerID().getValue();
-            var idFromDb = customerOpt.get().getCustomerID();
 
-            if (id == idFromDb) {
+        if (customerOpt.isPresent()) {
+            var id = customer.getCustomerID().getValue().toString();
+            var idFromDb = customerOpt.get().getCustomerID().toString();
+
+            if (id.equals(idFromDb)) {
                 save(customer);
             }
         }
@@ -139,11 +140,14 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
         var offset = Long.valueOf(filter.getOffset());
 
         var query = new Query();
+        query.limit(limit).skip(offset);
+
         var customerMongoDBModels = new ArrayList<CustomerMongoDBModel>();
 
         if (id != null) {
             var idUuid = UUID.fromString(id);
-            query.addCriteria(Criteria.where("_id").is(idUuid)).limit(limit).skip(offset);
+            query.addCriteria(Criteria.where("_id").is(idUuid));
+            customerMongoDBModels.addAll(mongoTemplate.find(query, CustomerMongoDBModel.class));
         }
 
         if (phone != null) {
@@ -153,14 +157,12 @@ public class CustomerMongoDBRepositoryImpl implements CustomerMongoDBRepository 
                     Criteria.where("secondPhone").is(phone)
             );
             query.addCriteria(criteria);
-        }
-
-        if (id == null && phone == null) {
-            query.limit(limit).skip(offset);
             customerMongoDBModels.addAll(mongoTemplate.find(query, CustomerMongoDBModel.class));
         }
 
-        customerMongoDBModels.addAll(mongoTemplate.find(query, CustomerMongoDBModel.class));
+        if (id == null && phone == null) {
+            customerMongoDBModels.addAll(mongoTemplate.find(query, CustomerMongoDBModel.class));
+        }
 
         return CustomerMongoDBConverter.toEntities(customerMongoDBModels);
     }

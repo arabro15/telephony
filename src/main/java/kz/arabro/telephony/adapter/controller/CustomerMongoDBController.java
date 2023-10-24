@@ -9,7 +9,6 @@ import kz.arabro.telephony.boundary.usecase.CreateCustomerMongoDBUseCase;
 import kz.arabro.telephony.boundary.usecase.DeleteCustomerMongoDBUseCase;
 import kz.arabro.telephony.boundary.usecase.ReadDataCustomerMongoDBUseCase;
 import kz.arabro.telephony.boundary.usecase.UpdateCustomerMongoDBUseCase;
-import kz.arabro.telephony.domain.usecase.CreateCustomerMongoDBUseCaseImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +27,7 @@ public class CustomerMongoDBController {
     private final ReadDataCustomerMongoDBUseCase readDataCustomerMongoDBUseCase;
     private final UpdateCustomerMongoDBUseCase updateCustomerMongoDBUseCase;
 
-    public CustomerMongoDBController(CreateCustomerMongoDBUseCaseImpl createMongoDBCustomerUseCase,
+    public CustomerMongoDBController(CreateCustomerMongoDBUseCase createMongoDBCustomerUseCase,
                                      DeleteCustomerMongoDBUseCase deleteCustomerMongoDBUseCase,
                                      ReadDataCustomerMongoDBUseCase readDataCustomerMongoDBUseCase,
                                      UpdateCustomerMongoDBUseCase updateCustomerMongoDBUseCase) {
@@ -97,6 +96,4 @@ public class CustomerMongoDBController {
 
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
-
-
 }

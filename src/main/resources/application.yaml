@@ -1,6 +1,6 @@
 spring:
   application:
-    name: telephony-test-task-demo
+    name: telephony
   main:
     banner-mode: off
   data:
