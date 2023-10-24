@@ -7,14 +7,14 @@ import kz.arabro.telephony.util.exception.CodedException;
 public final class UseCaseError {
     public static final String CUSTOMER_CREATE_INFO_IS_REQUIRED = "cc394b68-001";
     public static final String CUSTOMER_ID_IS_REQUIRED_IN_DELETE_BY_ID = "cc394b68-002";
-    public static final String CUSTOMER_ID_IS_REQUIRED_IN_DELETE_BY_PHONE = "cc394b68-003";
+    public static final String PHONE_IS_REQUIRED_IN_DELETE_BY_PHONE = "cc394b68-003";
     public static final String CUSTOMER_ID_IS_REQUIRED_IN_FIND_BY_ID = "cc394b68-004";
     public static final String CUSTOMER_IS_NOT_FOUND_BY_ID = "cc394b68-005";
     public static final String PHONE_IS_REQUIRED_IN_FIND_BY_PHONE = "cc394b68-006";
     public static final String CUSTOMER_IS_NOT_FOUND_BY_PHONE = "cc394b68-007";
     public static final String FILTER_IS_REQUIRED_IN_FIND_WITH_FILTER = "cc394b68-008";
     public static final String CUSTOMER_ID_IS_REQUIRED_IN_EXISTS_BY_ID = "cc394b68-009";
-    public static final String CUSTOMER_ID_IS_REQUIRED_IN_EXISTS_BY_PHONE = "cc394b68-010";
+    public static final String PHONE_IS_REQUIRED_IN_EXISTS_BY_PHONE = "cc394b68-010";
     public static final String CUSTOMER_UPDATE_INFO_IS_REQUIRED = "cc394b68-011";
     public static final String PARSE_CREATED_AT_TO_INSTANT = "cc394b68-012";
     public static final String CUSTOMER_PHONE_ALREADY_EXISTS = "cc394b68-013";
@@ -28,9 +28,9 @@ public final class UseCaseError {
         var errMsg = "CustomerID is required in DeleteByID";
         return new CodedException(CUSTOMER_ID_IS_REQUIRED_IN_DELETE_BY_ID, errMsg);
     }
-    public static CodedException errCustomerIDIsRequiredInDeleteByPhone() {
-        var errMsg = "CustomerID is required in DeleteByPhone";
-        return new CodedException(CUSTOMER_ID_IS_REQUIRED_IN_DELETE_BY_PHONE, errMsg);
+    public static CodedException errPhoneIsRequiredInDeleteByPhone() {
+        var errMsg = "Phone is required in DeleteByPhone";
+        return new CodedException(PHONE_IS_REQUIRED_IN_DELETE_BY_PHONE, errMsg);
     }
 
     public static CodedException errCustomerIDIsRequiredInFindByID() {
@@ -63,9 +63,9 @@ public final class UseCaseError {
         return new CodedException(CUSTOMER_ID_IS_REQUIRED_IN_EXISTS_BY_ID, errMsg);
     }
 
-    public static CodedException errCustomerIDIsRequiredInExistsByPhone() {
-        var errMsg = "CustomerID is required in ExistsByPhone";
-        return new CodedException(CUSTOMER_ID_IS_REQUIRED_IN_EXISTS_BY_PHONE, errMsg);
+    public static CodedException errPhoneIsRequiredInExistsByPhone() {
+        var errMsg = "Phone is required in ExistsByPhone";
+        return new CodedException(PHONE_IS_REQUIRED_IN_EXISTS_BY_PHONE, errMsg);
     }
 
     public static CodedException errCustomerUpdateInfoIsRequired() {

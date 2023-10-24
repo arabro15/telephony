@@ -29,7 +29,7 @@ public class DeleteCustomerPostgreSQLUseCaseImpl implements DeleteCustomerPostgr
     @Override
     public void deleteCustomerByPhone(String phoneStr) {
         if (phoneStr == null) {
-            throw UseCaseError.errCustomerIDIsRequiredInDeleteByPhone();
+            throw UseCaseError.errPhoneIsRequiredInDeleteByPhone();
         }
 
         var phone = Phone.of(phoneStr);
