@@ -70,7 +70,7 @@ public class ReadDataCustomerPostgreSQLUseCaseImpl implements ReadDataCustomerPo
     @Override
     public boolean existsByPhone(String phoneStr) {
         if (phoneStr == null) {
-            throw UseCaseError.errCustomerIDIsRequiredInExistsByPhone();
+            throw UseCaseError.errPhoneIsRequiredInExistsByPhone();
         }
 
         var phone = Phone.of(phoneStr);
