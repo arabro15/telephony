@@ -7,10 +7,13 @@ import kz.arabro.telephony.boundary.repository.CustomerPostgreSQLRepository;
 import kz.arabro.telephony.domain.entity.Customer;
 import kz.arabro.telephony.domain.entity.CustomerID;
 import kz.arabro.telephony.domain.entity.Phone;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class CustomerPostgreSQLRepositoryImpl implements CustomerPostgreSQLRepository {
 
     private final CustomerMapper customerMapper;
@@ -19,6 +22,7 @@ public class CustomerPostgreSQLRepositoryImpl implements CustomerPostgreSQLRepos
         this.customerMapper = customerMapper;
     }
 
+    @Transactional
     @Override
     public CustomerID save(Customer customer) {
         if (customer == null) {
@@ -31,6 +35,7 @@ public class CustomerPostgreSQLRepositoryImpl implements CustomerPostgreSQLRepos
         return customer.getCustomerID();
     }
 
+    @Transactional
     @Override
     public void deleteByID(CustomerID customerID) {
         if (customerID == null) {
@@ -42,6 +47,7 @@ public class CustomerPostgreSQLRepositoryImpl implements CustomerPostgreSQLRepos
         customerMapper.deleteCustomerByID(id);
     }
 
+    @Transactional
     @Override
     public void deleteByPhone(Phone phone) {
         if (phone == null) {
@@ -64,6 +70,7 @@ public class CustomerPostgreSQLRepositoryImpl implements CustomerPostgreSQLRepos
         customerMapper.updateCustomerByID(customerPostgreSQLModel);
     }
 
+    @Transactional
     @Override
     public void updateByPhone(Customer customer) {
         if (customer == null) {

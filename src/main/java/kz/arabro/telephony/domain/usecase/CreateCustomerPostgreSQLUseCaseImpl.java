@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 
+@Service
 public class CreateCustomerPostgreSQLUseCaseImpl implements CreateCustomerPostgreSQLUseCase {
 
     private final CustomerPostgreSQLRepository customerPostgreSQLRepository;

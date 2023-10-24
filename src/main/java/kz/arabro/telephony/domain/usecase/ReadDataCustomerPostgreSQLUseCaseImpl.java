@@ -6,9 +6,11 @@ import kz.arabro.telephony.boundary.usecase.ReadDataCustomerPostgreSQLUseCase;
 import kz.arabro.telephony.domain.entity.Customer;
 import kz.arabro.telephony.domain.entity.CustomerID;
 import kz.arabro.telephony.domain.entity.Phone;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ReadDataCustomerPostgreSQLUseCaseImpl implements ReadDataCustomerPostgreSQLUseCase {
 
     private final CustomerPostgreSQLRepository customerPostgreSQLRepository;

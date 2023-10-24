@@ -4,7 +4,9 @@ import kz.arabro.telephony.boundary.repository.CustomerPostgreSQLRepository;
 import kz.arabro.telephony.boundary.usecase.DeleteCustomerPostgreSQLUseCase;
 import kz.arabro.telephony.domain.entity.CustomerID;
 import kz.arabro.telephony.domain.entity.Phone;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DeleteCustomerPostgreSQLUseCaseImpl implements DeleteCustomerPostgreSQLUseCase {
 
     private final CustomerPostgreSQLRepository customerPostgreSQLRepository;
