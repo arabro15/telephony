@@ -1,7 +1,7 @@
 # telephony - Тестовое задание greetgo!
  
 **Используемые технологий:** Java 17, Gradle 8.3, Clean architecture, Spring (Boot 3.1.5, Web, Data MongoDB) , MyBatis, 
-Lombok, Migration(Flyway, Mongock), PosgreSQL, MongoDB , REST API, JUnit и Mocikto.
+Lombok, Migration(Flyway, Mongock), PosgreSQL, MongoDB , REST API, Testing(JUnit, Mocikto, Testontainer, Integration).
 
 # Начало работы:
 ---
