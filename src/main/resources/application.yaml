@@ -7,8 +7,8 @@ spring:
     mongodb:
       username: local_mongo_user
       password: 106fe2e9be0e4016a60f68ad40c9451a
-      host: localhost
-      port: 27039
+      host: ${MONGODB_HOST}
+      port: 27017
       database: telephony
       authentication-database: admin
   datasource:
@@ -18,8 +18,8 @@ spring:
     maximumPoolSize: 30
     minimumIdle: 5
     dataSourceProperties:
-      serverName: localhost
-      portNumber: 5438
+      serverName: ${POSTGRES_HOST}
+      portNumber: 5432
       databaseName: local_telephony_posgresql
     flyway:
       enabled: true
@@ -34,4 +34,4 @@ mongock:
   change-logs-scan-package: "kz.arabro.telephony.util.migration"
 
 server:
-  port: 8091
+  port: 8099
