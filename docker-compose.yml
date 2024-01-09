@@ -7,12 +7,10 @@ services:
     expose:
       - 5432
     ports:
-      - "5438:5432"
+      - "5432:5432"
     env_file:
       - docker/env/postgresql.env
-    volumes:
-      - ./dbdata/mongodb:/data/db
-  
+
   docker-mongodb:
     container_name: local_telephony_mongodb
     image: mongo:latest
@@ -20,8 +18,19 @@ services:
     expose:
       - 27017
     ports:
-      - "27039:27017"
+      - "27017:27017"
     env_file:
       - docker/env/mongodb.env
-    volumes:
-      - ./dbdata/mongodb:/data/db
+
+  telephony-app:
+    depends_on:
+      - docker-postgres
+      - docker-mongodb
+    build:
+      context: .
+    container_name: telephony-app
+    environment:
+      - POSTGRES_HOST=local_telephony_postgresql
+      - MONGODB_HOST=local_telephony_mongodb
+    ports:
+      - "8099:8099"
